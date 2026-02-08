@@ -1,4 +1,5 @@
 import Env from 'env';
+import { router } from 'expo-router';
 import { useUniwind } from 'uniwind';
 
 import {
@@ -76,6 +77,21 @@ export function SettingsScreen() {
               text="settings.website"
               icon={<Website color={iconColor} />}
               onPress={() => {}}
+            />
+          </SettingsContainer>
+
+          <SettingsContainer title="devTesting.title">
+            <SettingsItem
+              text="devTesting.phoneAuth"
+              onPress={() => router.push('/phone-auth')}
+            />
+            <SettingsItem
+              text="devTesting.otpVerification"
+              onPress={() =>
+                router.push({
+                  pathname: '/verify-otp',
+                  params: { phoneNumber: '+923001234567' },
+                })}
             />
           </SettingsContainer>
 
