@@ -1,3 +1,4 @@
+import { router } from 'expo-router';
 import { useState } from 'react';
 
 type Property = {
@@ -48,9 +49,7 @@ export function useHome() {
   };
 
   const handlePropertyPress = (id: string) => {
-    // TODO: Navigate to property details screen
-    console.log('Property pressed:', id);
-    // router.push(`/property/${id}`);
+    router.push(`/property-details/${id}`);
   };
 
   const handleCreateFlatmateListing = () => {

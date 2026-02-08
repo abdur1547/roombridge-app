@@ -1,7 +1,7 @@
 # RoomBridge - GitHub Copilot Development Guide
 
-> **Project Type**: React Native Mobile Application (Expo)  
-> **Based On**: [Obytes React Native Starter](https://starter.obytes.com/)  
+> **Project Type**: React Native Mobile Application (Expo)
+> **Based On**: [Obytes React Native Starter](https://starter.obytes.com/)
 > **Tech Stack**: Expo 54, React Native 0.81, TypeScript, Tailwind CSS (NativeWind/Uniwind)
 
 ---
@@ -170,9 +170,9 @@ import { getFieldError } from '@/components/ui/form-utils';
 
 #### From lib:
 ```tsx
-import { translate } from '@/lib/i18n';
-import { client, APIProvider } from '@/lib/api';
 import Env from '@env'; // or import Env from 'env';
+import { APIProvider, client } from '@/lib/api';
+import { translate } from '@/lib/i18n';
 ```
 
 ### TypeScript
@@ -209,7 +209,7 @@ production   → Production builds
    ```env
    # Client-accessible (available in src/)
    EXPO_PUBLIC_API_URL=https://api.example.com
-   
+
    # Build-time only (NOT in src/)
    SECRET_KEY=my-secret
    ```
@@ -234,6 +234,7 @@ production   → Production builds
 5. **Use in code**:
    ```tsx
    import Env from '@env';
+
    console.log(Env.EXPO_PUBLIC_API_URL);
    ```
 
@@ -397,10 +398,10 @@ type AuthState = {
   signOut: () => void;
 };
 
-const _useAuthStore = create<AuthState>((set) => ({
+const _useAuthStore = create<AuthState>(set => ({
   status: 'idle',
   token: null,
-  signIn: (token) => set({ status: 'signIn', token }),
+  signIn: token => set({ status: 'signIn', token }),
   signOut: () => set({ status: 'signOut', token: null }),
 }));
 
@@ -449,19 +450,19 @@ export async function removeItem(key: string) {
 ```tsx
 import { Button, Input, Text, View } from '@/components/ui';
 
-<View className="flex-1 p-4 bg-white dark:bg-black">
+<View className="flex-1 bg-white p-4 dark:bg-black">
   <Text className="text-xl font-semibold text-black dark:text-white">
     Welcome
   </Text>
-  
-  <Button 
-    label="Submit" 
+
+  <Button
+    label="Submit"
     variant="default"
     size="lg"
     loading={isPending}
     onPress={handleSubmit}
   />
-</View>
+</View>;
 ```
 
 ### Button Variants
@@ -478,7 +479,6 @@ import { Button, Input, Text, View } from '@/components/ui';
 ### Creating a New Component
 
 ```tsx
-/* eslint-disable better-tailwindcss/no-unknown-classes */
 import type { PressableProps } from 'react-native';
 import type { VariantProps } from 'tailwind-variants';
 import * as React from 'react';
@@ -512,7 +512,7 @@ type Props = VariantProps<typeof myComponent> & PressableProps;
 
 export function MyComponent({ variant, size, ...props }: Props) {
   const styles = myComponent({ variant, size });
-  
+
   return (
     <Pressable className={styles.container()}>
       <Text className={styles.label()}>Label</Text>
@@ -562,7 +562,7 @@ export function LoginForm({ onSubmit }) {
     <View className="p-4">
       <form.Field
         name="email"
-        children={(field) => (
+        children={field => (
           <Input
             label="Email"
             value={field.state.value}
@@ -572,10 +572,10 @@ export function LoginForm({ onSubmit }) {
           />
         )}
       />
-      
+
       <form.Field
         name="password"
-        children={(field) => (
+        children={field => (
           <Input
             label="Password"
             secureTextEntry
@@ -586,9 +586,9 @@ export function LoginForm({ onSubmit }) {
           />
         )}
       />
-      
+
       <form.Subscribe
-        selector={(state) => [state.isSubmitting]}
+        selector={state => [state.isSubmitting]}
         children={([isSubmitting]) => (
           <Button
             label="Login"
@@ -607,16 +607,16 @@ export function LoginForm({ onSubmit }) {
 ```tsx
 <form.Field
   name="category"
-  children={(field) => (
+  children={field => (
     <Select
       label="Category"
       value={field.state.value}
-      onSelect={(value) => field.handleChange(value)} // Note: onSelect not onChangeText
+      onSelect={value => field.handleChange(value)} // Note: onSelect not onChangeText
       options={categories}
       error={getFieldError(field)}
     />
   )}
-/>
+/>;
 ```
 
 ### Form with API Mutation
@@ -624,7 +624,7 @@ export function LoginForm({ onSubmit }) {
 ```tsx
 export function AddPostScreen() {
   const { mutate: addPost, isPending } = useAddPost();
-  
+
   const form = useForm({
     defaultValues: { title: '', body: '' },
     validators: { onChange: schema as any },
@@ -647,7 +647,7 @@ export function AddPostScreen() {
     <View className="flex-1 p-4">
       {/* Fields */}
       <form.Subscribe
-        selector={(state) => [state.isSubmitting]}
+        selector={state => [state.isSubmitting]}
         children={([isSubmitting]) => (
           <Button
             label="Submit"
@@ -764,7 +764,7 @@ export default function TabLayout() {
 ```tsx
 import { translate } from '@/lib/i18n';
 
-<Text>{translate('common.welcome')}</Text>
+<Text>{translate('common.welcome')}</Text>;
 ```
 
 ### Translation Files
@@ -864,7 +864,7 @@ echo "export { MyFeatureScreen as default } from '@/features/my-feature/my-featu
 ```tsx
 // src/features/feed/api.ts
 import type { AxiosError } from 'axios';
-import { createQuery, createMutation } from 'react-query-kit';
+import { createMutation, createQuery } from 'react-query-kit';
 import { client } from '@/lib/api';
 
 // 1. Define types
@@ -881,7 +881,7 @@ export const usePosts = createQuery<Post[], void, AxiosError>({
 
 // 3. Create mutation
 export const useAddPost = createMutation<Post, Partial<Post>, AxiosError>({
-  mutationFn: async (data) =>
+  mutationFn: async data =>
     client.post('posts', data).then(res => res.data),
 });
 ```
@@ -897,9 +897,9 @@ type State = {
   increment: () => void;
 };
 
-const _useStore = create<State>((set) => ({
+const _useStore = create<State>(set => ({
   count: 0,
-  increment: () => set((state) => ({ count: state.count + 1 })),
+  increment: () => set(state => ({ count: state.count + 1 })),
 }));
 
 export const useStore = createSelectors(_useStore);
@@ -917,11 +917,11 @@ import { PostCard } from './components/post-card';
 
 export function FeedScreen() {
   const { data, isPending, isError } = usePosts();
-  
+
   if (isError) {
     return <View><Text>Error loading data</Text></View>;
   }
-  
+
   return (
     <View className="flex-1">
       <FocusAwareStatusBar />
