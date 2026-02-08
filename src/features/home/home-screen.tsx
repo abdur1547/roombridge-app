@@ -1,7 +1,10 @@
 import { FlashList } from '@shopify/flash-list';
 import * as React from 'react';
+import { TextInput } from 'react-native';
 
-import { FocusAwareStatusBar, Input, Text, View } from '@/components/ui';
+import { FocusAwareStatusBar, Text, View } from '@/components/ui';
+import colors from '@/components/ui/colors';
+import { Search } from '@/components/ui/icons';
 import { translate } from '@/lib/i18n';
 import { ListingTypeCard } from './components/listing-type-card';
 import { PropertyCard } from './components/property-card';
@@ -22,13 +25,17 @@ export function HomeScreen() {
       <FocusAwareStatusBar />
 
       {/* Header with Search */}
-      <View className="border-b border-neutral-200 bg-white px-4 pt-12 pb-4 dark:border-neutral-800 dark:bg-black">
-        <Input
-          placeholder={translate('home.searchPlaceholder')}
-          value={searchQuery}
-          onChangeText={handleSearch}
-          className="rounded-xl"
-        />
+      <View className="items-center border-b border-neutral-200 bg-white px-4 pt-12 pb-4 dark:border-neutral-800 dark:bg-black">
+        <View className="w-[90%] flex-row items-center rounded-full border border-neutral-300 bg-white px-4 py-2.5 dark:border-neutral-600 dark:bg-neutral-900">
+          <Search color="#9CA3AF" width={20} height={20} />
+          <TextInput
+            placeholder={translate('home.searchPlaceholder')}
+            placeholderTextColor={colors.neutral[400]}
+            value={searchQuery}
+            onChangeText={handleSearch}
+            className="flex-1 pl-3 text-base text-black dark:text-white"
+          />
+        </View>
       </View>
 
       {/* Content */}
