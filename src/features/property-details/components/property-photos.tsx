@@ -1,8 +1,7 @@
-import type { ImageSourcePropType } from 'react-native';
 import * as React from 'react';
 import { Image, Modal, Pressable, View } from 'react-native';
-import { X, ChevronLeft, ChevronRight } from '@/components/ui/icons';
 import { Text } from '@/components/ui';
+import { ChevronLeft, ChevronRight, X } from '@/components/ui/icons';
 
 type Props = {
   images: string[];
@@ -22,11 +21,11 @@ export function PropertyPhotos({ images }: Props) {
   };
 
   const showNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
+    setCurrentIndex(prev => (prev + 1) % images.length);
   };
 
   const showPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    setCurrentIndex(prev => (prev - 1 + images.length) % images.length);
   };
 
   if (!images || images.length === 0) {
@@ -61,7 +60,8 @@ export function PropertyPhotos({ images }: Props) {
                 {index === 2 && images.length > 4 && (
                   <View className="absolute inset-0 items-center justify-center rounded-lg bg-black/60">
                     <Text className="text-xl font-semibold text-white">
-                      +{images.length - 4}
+                      +
+                      {images.length - 4}
                     </Text>
                   </View>
                 )}
@@ -82,7 +82,7 @@ export function PropertyPhotos({ images }: Props) {
           {/* Close Button */}
           <Pressable
             onPress={closeFullScreen}
-            className="absolute right-4 top-12 z-50 h-10 w-10 items-center justify-center rounded-full bg-white/20"
+            className="absolute top-12 right-4 z-50 size-10 items-center justify-center rounded-full bg-white/20"
           >
             <X size={24} className="text-white" />
           </Pressable>
@@ -91,7 +91,7 @@ export function PropertyPhotos({ images }: Props) {
           <View className="flex-1 items-center justify-center">
             <Image
               source={{ uri: images[currentIndex] }}
-              className="h-full w-full"
+              className="size-full"
               resizeMode="contain"
             />
           </View>
@@ -101,14 +101,14 @@ export function PropertyPhotos({ images }: Props) {
             <>
               <Pressable
                 onPress={showPrevious}
-                className="absolute left-4 top-1/2 h-12 w-12 -translate-y-6 items-center justify-center rounded-full bg-white/20"
+                className="absolute top-1/2 left-4 size-12 -translate-y-6 items-center justify-center rounded-full bg-white/20"
               >
                 <ChevronLeft size={28} className="text-white" />
               </Pressable>
 
               <Pressable
                 onPress={showNext}
-                className="absolute right-4 top-1/2 h-12 w-12 -translate-y-6 items-center justify-center rounded-full bg-white/20"
+                className="absolute top-1/2 right-4 size-12 -translate-y-6 items-center justify-center rounded-full bg-white/20"
               >
                 <ChevronRight size={28} className="text-white" />
               </Pressable>
@@ -116,10 +116,13 @@ export function PropertyPhotos({ images }: Props) {
           )}
 
           {/* Image Counter */}
-          <View className="absolute bottom-8 left-0 right-0 items-center">
+          <View className="absolute right-0 bottom-8 left-0 items-center">
             <View className="rounded-full bg-white/20 px-4 py-2">
               <Text className="text-sm font-medium text-white">
-                {currentIndex + 1} / {images.length}
+                {currentIndex + 1}
+                {' '}
+                /
+                {images.length}
               </Text>
             </View>
           </View>

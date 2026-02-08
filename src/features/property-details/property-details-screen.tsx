@@ -1,16 +1,16 @@
+import { useLocalSearchParams } from 'expo-router';
 import * as React from 'react';
 import { ScrollView } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
 import { FocusAwareStatusBar, View } from '@/components/ui';
-import { ShareFavoriteActions } from './components/share-favorite-actions';
-import { PropertyPhotos } from './components/property-photos';
-import { PropertyInfo } from './components/property-info';
+import { AboutFlatmates } from './components/about-flatmates';
+import { AcceptingComponent } from './components/accepting-component';
 import { ContactOwnerButton } from './components/contact-owner-button';
 import { PropertyDescription } from './components/property-description';
-import { AcceptingComponent } from './components/accepting-component';
 import { PropertyFeatures } from './components/property-features';
+import { PropertyInfo } from './components/property-info';
+import { PropertyPhotos } from './components/property-photos';
 import { RoomOverview } from './components/room-overview';
-import { AboutFlatmates } from './components/about-flatmates';
+import { ShareFavoriteActions } from './components/share-favorite-actions';
 
 // Mock data - replace with API call later
 const MOCK_PROPERTY = {

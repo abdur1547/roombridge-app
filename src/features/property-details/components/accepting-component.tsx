@@ -24,7 +24,7 @@ export function AcceptingComponent({ acceptingTypes }: Props) {
       </Text>
 
       <View className="mt-3 flex-row flex-wrap gap-2">
-        {acceptingTypes.map((type) => (
+        {acceptingTypes.map(type => (
           <View
             key={type}
             className="flex-row items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 dark:bg-neutral-800"

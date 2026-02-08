@@ -33,7 +33,7 @@ export function PropertyDescription({
 
       {/* Description */}
       <Text
-        className="mt-2 text-base leading-6 text-neutral-700 dark:text-neutral-300"
+        className="mt-2 text-base/6 text-neutral-700 dark:text-neutral-300"
         numberOfLines={isExpanded ? undefined : maxLines}
         onTextLayout={handleTextLayout}
       >
@@ -49,11 +49,13 @@ export function PropertyDescription({
           <Text className="text-base font-medium text-neutral-900 dark:text-white">
             {isExpanded ? 'View less' : 'View more about the property'}
           </Text>
-          {isExpanded ? (
-            <ChevronUp size={20} className="text-neutral-900 dark:text-white" />
-          ) : (
-            <ChevronDown size={20} className="text-neutral-900 dark:text-white" />
-          )}
+          {isExpanded
+            ? (
+                <ChevronUp size={20} className="text-neutral-900 dark:text-white" />
+              )
+            : (
+                <ChevronDown size={20} className="text-neutral-900 dark:text-white" />
+              )}
         </Pressable>
       )}
     </View>

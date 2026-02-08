@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { Text } from '@/components/ui';
-import { Wifi, Car, Tv, Snowflake } from '@/components/ui/icons';
+import { Car, Snowflake, Tv, Wifi } from '@/components/ui/icons';
 
 type Feature = {
   id: string;

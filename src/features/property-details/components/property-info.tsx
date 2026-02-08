@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { Text } from '@/components/ui';
-import { Bed, Bath, Users } from '@/components/ui/icons';
+import { Bath, Bed, Users } from '@/components/ui/icons';
 
 type Props = {
   name: string;
@@ -37,10 +37,13 @@ export function PropertyInfo({
       {/* Rent */}
       <View className="mt-3 flex-row items-baseline">
         <Text className="text-3xl font-bold text-neutral-900 dark:text-white">
-          ${rent}
+          $
+          {rent}
         </Text>
         <Text className="ml-1 text-base text-neutral-600 dark:text-neutral-400">
-          Inc. bills / per {rentPeriod}
+          Inc. bills / per
+          {' '}
+          {rentPeriod}
         </Text>
       </View>
 

@@ -1,7 +1,7 @@
 import type { ViewProps } from 'react-native';
 import * as React from 'react';
 import { Pressable, View } from 'react-native';
-import { Share, Heart, Facebook, Twitter, MessageCircle } from '@/components/ui/icons';
+import { Facebook, Heart, MessageCircle, Share, Twitter } from '@/components/ui/icons';
 
 type Props = ViewProps & {
   onShare?: () => void;
@@ -24,13 +24,13 @@ export function ShareFavoriteActions({
 
   return (
     <View
-      className="absolute right-4 top-4 z-50 flex flex-col gap-3"
+      className="absolute top-4 right-4 z-50 flex flex-col gap-3"
       {...props}
     >
       {/* Share Button */}
       <Pressable
         onPress={handleShare}
-        className="h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg dark:bg-neutral-800"
+        className="size-12 items-center justify-center rounded-full bg-white shadow-lg dark:bg-neutral-800"
       >
         <Share size={20} className="text-neutral-900 dark:text-white" />
       </Pressable>
@@ -38,13 +38,13 @@ export function ShareFavoriteActions({
       {/* Social Icons - Show on Share click */}
       {showSocial && (
         <View className="flex flex-col gap-2">
-          <Pressable className="h-10 w-10 items-center justify-center rounded-full bg-blue-600 shadow-md">
+          <Pressable className="size-10 items-center justify-center rounded-full bg-blue-600 shadow-md">
             <Facebook size={18} className="text-white" />
           </Pressable>
-          <Pressable className="h-10 w-10 items-center justify-center rounded-full bg-sky-500 shadow-md">
+          <Pressable className="size-10 items-center justify-center rounded-full bg-sky-500 shadow-md">
             <Twitter size={18} className="text-white" />
           </Pressable>
-          <Pressable className="h-10 w-10 items-center justify-center rounded-full bg-green-600 shadow-md">
+          <Pressable className="size-10 items-center justify-center rounded-full bg-green-600 shadow-md">
             <MessageCircle size={18} className="text-white" />
           </Pressable>
         </View>
@@ -53,7 +53,7 @@ export function ShareFavoriteActions({
       {/* Favorite Button */}
       <Pressable
         onPress={onFavorite}
-        className="h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg dark:bg-neutral-800"
+        className="size-12 items-center justify-center rounded-full bg-white shadow-lg dark:bg-neutral-800"
       >
         <Heart
           size={20}
