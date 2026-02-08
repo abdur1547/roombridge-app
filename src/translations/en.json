@@ -1,6 +1,28 @@
 {
+  "devTesting": {
+    "otpVerification": "OTP Verification",
+    "phoneAuth": "Phone Auth",
+    "title": "Dev/Testing"
+  },
   "onboarding": {
     "message": "Welcome to obytes app site"
+  },
+  "otpVerification": {
+    "didntReceive": "Didn't receive the code?",
+    "editNumber": "Not your number?",
+    "otpLabel": "Verification Code",
+    "resend": "Resend",
+    "subtitle": "Enter the 6-digit code we sent to",
+    "title": "Verify Your Number",
+    "verify": "Verify"
+  },
+  "phoneAuth": {
+    "countryCode": "Country Code",
+    "infoText": "By continuing, you agree to our Terms of Service and Privacy Policy",
+    "phoneNumber": "Phone Number",
+    "sendOtp": "Send Verification Code",
+    "subtitle": "We'll send you a verification code to confirm your number",
+    "title": "Enter Your Phone Number"
   },
   "settings": {
     "about": "About",
