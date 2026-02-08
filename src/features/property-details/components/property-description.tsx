@@ -51,10 +51,10 @@ export function PropertyDescription({
           </Text>
           {isExpanded
             ? (
-                <ChevronUp size={20} className="text-neutral-900 dark:text-white" />
+                <ChevronUp width={20} height={20} className="text-neutral-900 dark:text-white" />
               )
             : (
-                <ChevronDown size={20} className="text-neutral-900 dark:text-white" />
+                <ChevronDown width={20} height={20} className="text-neutral-900 dark:text-white" />
               )}
         </Pressable>
       )}

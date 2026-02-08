@@ -19,8 +19,8 @@ export function RoomOverview({ details }: Props) {
       </Text>
 
       <View className="mt-3 gap-3">
-        {details.map((detail, index) => (
-          <View key={index} className="flex-row items-center justify-between">
+        {details.map(detail => (
+          <View key={detail.label} className="flex-row items-center justify-between">
             <Text className="text-base text-neutral-600 dark:text-neutral-400">
               {detail.label}
             </Text>

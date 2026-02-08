@@ -6,7 +6,7 @@ import { Check } from '@/components/ui/icons';
 type AcceptingType = 'students' | 'backpackers' | 'professionals' | 'anyone';
 
 type Props = {
-  acceptingTypes: AcceptingType[];
+  acceptingTypes: readonly AcceptingType[];
 };
 
 const acceptingLabels: Record<AcceptingType, string> = {
@@ -29,7 +29,7 @@ export function AcceptingComponent({ acceptingTypes }: Props) {
             key={type}
             className="flex-row items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 dark:bg-neutral-800"
           >
-            <Check size={16} className="text-green-600 dark:text-green-500" />
+            <Check width={16} height={16} className="text-green-600 dark:text-green-500" />
             <Text className="text-sm text-neutral-900 dark:text-white">
               {acceptingLabels[type]}
             </Text>

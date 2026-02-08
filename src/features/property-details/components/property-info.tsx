@@ -51,7 +51,7 @@ export function PropertyInfo({
       <View className="mt-4 flex-row items-center gap-6">
         {/* Bedrooms */}
         <View className="flex-row items-center gap-2">
-          <Bed size={20} className="text-neutral-600 dark:text-neutral-400" />
+          <Bed width={20} height={20} className="text-neutral-600 dark:text-neutral-400" />
           <Text className="text-base text-neutral-900 dark:text-white">
             {bedrooms}
           </Text>
@@ -59,7 +59,7 @@ export function PropertyInfo({
 
         {/* Bathrooms */}
         <View className="flex-row items-center gap-2">
-          <Bath size={20} className="text-neutral-600 dark:text-neutral-400" />
+          <Bath width={20} height={20} className="text-neutral-600 dark:text-neutral-400" />
           <Text className="text-base text-neutral-900 dark:text-white">
             {bathrooms}
           </Text>
@@ -67,7 +67,7 @@ export function PropertyInfo({
 
         {/* Occupancy */}
         <View className="flex-row items-center gap-2">
-          <Users size={20} className="text-neutral-600 dark:text-neutral-400" />
+          <Users width={20} height={20} className="text-neutral-600 dark:text-neutral-400" />
           <Text className="text-base text-neutral-900 dark:text-white">
             {occupancy}
           </Text>

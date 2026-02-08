@@ -38,7 +38,8 @@ export function PropertyFeatures({ features }: Props) {
             >
               {IconComponent && (
                 <IconComponent
-                  size={18}
+                  width={18}
+                  height={18}
                   className="text-neutral-700 dark:text-neutral-300"
                 />
               )}

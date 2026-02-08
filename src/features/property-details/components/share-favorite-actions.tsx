@@ -32,20 +32,20 @@ export function ShareFavoriteActions({
         onPress={handleShare}
         className="size-12 items-center justify-center rounded-full bg-white shadow-lg dark:bg-neutral-800"
       >
-        <Share size={20} className="text-neutral-900 dark:text-white" />
+        <Share width={20} height={20} className="text-neutral-900 dark:text-white" />
       </Pressable>
 
       {/* Social Icons - Show on Share click */}
       {showSocial && (
         <View className="flex flex-col gap-2">
           <Pressable className="size-10 items-center justify-center rounded-full bg-blue-600 shadow-md">
-            <Facebook size={18} className="text-white" />
+            <Facebook width={18} height={18} className="text-white" />
           </Pressable>
           <Pressable className="size-10 items-center justify-center rounded-full bg-sky-500 shadow-md">
-            <Twitter size={18} className="text-white" />
+            <Twitter width={18} height={18} className="text-white" />
           </Pressable>
           <Pressable className="size-10 items-center justify-center rounded-full bg-green-600 shadow-md">
-            <MessageCircle size={18} className="text-white" />
+            <MessageCircle width={18} height={18} className="text-white" />
           </Pressable>
         </View>
       )}
@@ -56,7 +56,8 @@ export function ShareFavoriteActions({
         className="size-12 items-center justify-center rounded-full bg-white shadow-lg dark:bg-neutral-800"
       >
         <Heart
-          size={20}
+          width={20}
+          height={20}
           className={isFavorite ? 'text-red-500' : 'text-neutral-900 dark:text-white'}
           fill={isFavorite ? '#ef4444' : 'none'}
         />

@@ -51,11 +51,11 @@ const MOCK_PROPERTY = {
 };
 
 export function PropertyDetailsScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id: _id } = useLocalSearchParams<{ id: string }>();
   const [isFavorite, setIsFavorite] = React.useState(false);
 
   // TODO: Fetch property data based on ID
-  // const { data: property, isPending } = useProperty({ variables: { id } });
+  // const { data: property, isPending } = useProperty({ variables: { id: _id } });
 
   const handleShare = () => {
     // TODO: Implement share functionality
