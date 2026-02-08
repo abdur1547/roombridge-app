@@ -4,6 +4,12 @@
     "phoneAuth": "Phone Auth",
     "title": "Dev/Testing"
   },
+  "home": {
+    "availableProperties": "Available Properties",
+    "needFlatmate": "I need a flatmate",
+    "needPlace": "I need a place",
+    "searchPlaceholder": "Search rooms and housemates"
+  },
   "onboarding": {
     "message": "Welcome to obytes app site"
   },
