@@ -9,7 +9,7 @@
   },
   "otpVerification": {
     "didntReceive": "Didn't receive the code?",
-    "editNumber": "Not your number?",
+    "editNumber": "Edit",
     "otpLabel": "Verification Code",
     "resend": "Resend",
     "subtitle": "Enter the 6-digit code we sent to",

@@ -1,40 +1,12 @@
-import { useForm } from '@tanstack/react-form';
-import { router } from 'expo-router';
 import * as React from 'react';
-import * as z from 'zod';
 
 import { Button, Input, Text, View } from '@/components/ui';
 import { getFieldError } from '@/components/ui/form-utils';
 import { translate } from '@/lib/i18n';
-
-const schema = z.object({
-  countryCode: z.string(),
-  phoneNumber: z
-    .string()
-    .min(10, 'Phone number must be at least 10 digits')
-    .regex(/^\d+$/, 'Phone number must contain only digits'),
-});
+import { usePhoneInput } from './use-phone-input';
 
 export function PhoneInputScreen() {
-  const form = useForm({
-    defaultValues: {
-      countryCode: '+92',
-      phoneNumber: '',
-    },
-    validators: {
-      onBlur: schema as any,
-      onChange: schema as any,
-    },
-    onSubmit: async ({ value }) => {
-      // Navigate to OTP verification screen
-      router.push({
-        pathname: '/verify-otp',
-        params: {
-          phoneNumber: `${value.countryCode}${value.phoneNumber}`,
-        },
-      });
-    },
-  });
+  const { form } = usePhoneInput();
 
   return (
     <View className="flex-1 bg-white dark:bg-black">

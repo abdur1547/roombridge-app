@@ -1,48 +1,14 @@
-import { useForm } from '@tanstack/react-form';
-import { router, useLocalSearchParams } from 'expo-router';
 import * as React from 'react';
-import * as z from 'zod';
+import { Pressable } from 'react-native';
 
 import { Button, Input, Text, View } from '@/components/ui';
 import { getFieldError } from '@/components/ui/form-utils';
 import { translate } from '@/lib/i18n';
-
-const schema = z.object({
-  otp: z
-    .string()
-    .length(6, 'OTP must be exactly 6 digits')
-    .regex(/^\d+$/, 'OTP must contain only digits'),
-});
+import { useOtpVerification } from './use-otp-verification';
 
 export function OtpVerificationScreen() {
-  const { phoneNumber } = useLocalSearchParams<{ phoneNumber: string }>();
-
-  const form = useForm({
-    defaultValues: {
-      otp: '',
-    },
-    validators: {
-      onBlur: schema as any,
-      onChange: schema as any,
-    },
-    onSubmit: async ({ value }) => {
-      // TODO: Add backend verification logic here
-      console.log('Verifying OTP:', value.otp, 'for phone:', phoneNumber);
-
-      // For now, just navigate to the app
-      // Replace with actual verification and navigation logic
-      router.replace('/(app)');
-    },
-  });
-
-  const handleResendOtp = () => {
-    // TODO: Add resend OTP logic
-    console.log('Resending OTP to:', phoneNumber);
-  };
-
-  const handleEditNumber = () => {
-    router.back();
-  };
+  const { form, phoneNumber, resendTimer, handleResendOtp, handleEditNumber }
+    = useOtpVerification();
 
   return (
     <View className="flex-1 bg-white dark:bg-black">
@@ -56,17 +22,17 @@ export function OtpVerificationScreen() {
             {translate('otpVerification.subtitle')}
           </Text>
           {phoneNumber && (
-            <View className="mt-3">
+            <Pressable
+              onPress={handleEditNumber}
+              className="mt-3 flex-row items-center justify-center gap-2"
+            >
               <Text className="text-center text-lg font-semibold text-black dark:text-white">
                 {phoneNumber}
               </Text>
-              <Button
-                label={translate('otpVerification.editNumber')}
-                onPress={handleEditNumber}
-                variant="link"
-                className="mt-1"
-              />
-            </View>
+              <Text className="text-base font-medium text-blue-600 dark:text-blue-400">
+                {translate('otpVerification.editNumber')}
+              </Text>
+            </Pressable>
           )}
         </View>
 
@@ -111,9 +77,14 @@ export function OtpVerificationScreen() {
             {' '}
           </Text>
           <Button
-            label={translate('otpVerification.resend')}
+            label={
+              resendTimer > 0
+                ? `${translate('otpVerification.resend')} (${resendTimer}s)`
+                : translate('otpVerification.resend')
+            }
             onPress={handleResendOtp}
             variant="link"
+            disabled={resendTimer > 0}
           />
         </View>
       </View>
